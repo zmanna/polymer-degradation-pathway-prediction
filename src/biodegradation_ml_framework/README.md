@@ -13,6 +13,7 @@ Main modules:
 - `uncertainty.py`: calibration, uncertainty, and selective prediction
 - `reliability_scoreboard.py`: final reliability-centered model comparison
 - `descriptor_graph_model.py`: descriptor-graph prototype model
+- `deep_learning.py`: optional PyTorch feedforward neural-network baseline
 
 The package initializer is intentionally lightweight; import from specific modules when possible.
 

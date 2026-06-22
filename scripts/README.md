@@ -21,6 +21,12 @@ Or run individual steps:
 9. `09_run_uncertainty_reliability_analysis.py`
 10. `10_run_model_reliability_scoreboard.py`
 
+Optional extension:
+
+11. `11_run_pytorch_neural_network_baseline.py`
+
+The PyTorch script is intentionally outside `generate_all_results.py` because it requires an optional deep-learning dependency and is not yet part of the canonical reliability scoreboard.
+
 Scripts should orchestrate workflows. Reusable logic belongs in `src/biodegradation_ml_framework/`.
 
 ## Dataset Tools

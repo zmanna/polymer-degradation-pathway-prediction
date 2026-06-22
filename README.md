@@ -119,6 +119,13 @@ python scripts/09_run_uncertainty_reliability_analysis.py
 python scripts/10_run_model_reliability_scoreboard.py
 ```
 
+An optional PyTorch neural-network extension is available separately:
+
+```sh
+python -m pip install -r requirements-pytorch.txt
+python scripts/11_run_pytorch_neural_network_baseline.py
+```
+
 Or regenerate the full project in one command:
 
 ```sh
@@ -181,6 +188,7 @@ The project currently evaluates:
 - Logistic Regression
 - Random Forest Classifier
 - Feedforward Neural Network
+- Optional PyTorch Feedforward Neural Network
 - Descriptor-graph neural network prototype
 
 The Feedforward Neural Network is included as a nonlinear dense baseline for tabular QSAR descriptor inputs. It was tested to determine whether a more flexible neural model could learn descriptor interactions that simpler classical models might miss. The main lesson so far is that neural-network complexity alone did not outperform the strongest classical baseline on this descriptor-only dataset. Its value is as a comparison point in the reliability story: it shows that model class matters less than representation quality, feature selection, calibration, and robustness under distribution shift.
@@ -209,6 +217,18 @@ results/metadata/neural_network_baseline_metrics.json
 ```
 
 In the research narrative, the feedforward neural network helps answer a specific methodological question: does a dense neural model improve biodegradation prediction from tabular descriptors compared with Logistic Regression and Random Forest? The current result is cautious. The neural baseline is valid and sometimes competitive under later feature/reliability analysis, but it is not the final recommended model. That negative or mixed result is useful because it supports the broader conclusion that trustworthy biodegradation prediction depends on reliability-centered evaluation, not simply using a more complex model.
+
+The optional PyTorch baseline extends this idea into a true deep-learning framework implementation:
+
+```text
+scripts/11_run_pytorch_neural_network_baseline.py
+src/biodegradation_ml_framework/deep_learning.py
+reports/pytorch_neural_network_baseline.md
+results/metadata/pytorch_neural_network_baseline_metrics.json
+results/predictions/pytorch_neural_network_predictions.csv
+```
+
+The first PyTorch extension run is documented in `docs/pytorch_extension_run_2026-06-22.md`. This PyTorch path is intentionally not part of the canonical `generate_all_results.py` workflow yet. It should be treated as a next-level extension for comparing framework-based neural training against the existing scikit-learn FNN baseline before deciding whether it belongs in the final reliability scoreboard.
 
 Exploratory notebooks should live in `notebooks/exploratory/`. They are useful for research development, but the canonical, reproducible workflow should remain in `scripts/` and `src/`.
 

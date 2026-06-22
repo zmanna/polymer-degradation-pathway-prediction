@@ -81,6 +81,23 @@ Or run the full sequence:
 PYTHONPATH=src MPLBACKEND=Agg python scripts/generate_all_results.py
 ```
 
+## Optional PyTorch Neural Baseline
+
+The PyTorch baseline is an optional next-level neural-network experiment. It is not part of the canonical `generate_all_results.py` workflow because PyTorch is a heavier dependency and the result is not yet integrated into the reliability scoreboard.
+
+Install and run it with:
+
+```sh
+python -m pip install -r requirements-pytorch.txt
+PYTHONPATH=src python scripts/11_run_pytorch_neural_network_baseline.py
+```
+
+Expected outputs:
+
+- `results/metadata/pytorch_neural_network_baseline_metrics.json`
+- `results/predictions/pytorch_neural_network_predictions.csv`
+- `reports/pytorch_neural_network_baseline.md`
+
 ## Expected Inputs
 
 Primary biodegradation workflow input:
@@ -111,9 +128,11 @@ Baseline and model outputs:
 
 - `results/metadata/baseline_model_metrics.json`
 - `results/metadata/neural_network_baseline_metrics.json`
+- `results/metadata/pytorch_neural_network_baseline_metrics.json` if the optional PyTorch script is run
 - `results/metadata/descriptor_graph_prototype_metrics.json`
 - `reports/baseline_modeling.md`
 - `reports/neural_network_baseline_summary.txt`
+- `reports/pytorch_neural_network_baseline.md` if the optional PyTorch script is run
 - `reports/descriptor_graph_prototype_summary.txt`
 
 Validation and feature outputs:

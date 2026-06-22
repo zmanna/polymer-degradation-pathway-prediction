@@ -9,6 +9,7 @@ Open these files when you want the project narrative without digging through raw
 - `baseline_modeling.md`
 - `cross_environment_validation.md`
 - `neural_network_baseline_summary.txt`
+- `pytorch_neural_network_baseline.md` optional PyTorch extension
 - `feature_engineering_summary.txt`
 - `feature_importance_selection_summary.txt`
 - `uncertainty_reliability_summary.txt`

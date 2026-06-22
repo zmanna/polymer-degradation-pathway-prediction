@@ -24,6 +24,7 @@ The exact verified package set is recorded in `requirements-verified.txt`.
 | Dataset metadata | `datasets/qsar_biodegradation_descriptor_benchmark/metadata/qsar_biodegradation_metadata.json` | `scripts/01_curate_dataset.py` | raw QSAR dataset | Canonical |
 | Baseline model comparison | `results/metadata/baseline_model_metrics.json` | `scripts/02_run_baseline_models.py` | curated QSAR features | Canonical |
 | Neural-network baseline | `results/metadata/neural_network_baseline_metrics.json` | `scripts/03_run_neural_network_baseline.py` | curated QSAR features | Canonical |
+| PyTorch neural-network extension | `results/metadata/pytorch_neural_network_baseline_metrics.json` | `scripts/11_run_pytorch_neural_network_baseline.py` | curated QSAR features | Optional extension; first run documented in `docs/pytorch_extension_run_2026-06-22.md` |
 | Descriptor-graph exploratory result | `results/metadata/descriptor_graph_prototype_metrics.json` | `scripts/04_run_descriptor_graph_prototype.py` | curated QSAR features | Exploratory |
 | Cross-environment validation | `results/tables/cross_environment_validation_summary.csv` | `scripts/05_run_cross_environment_validation.py` | curated QSAR features | Canonical |
 | Stratified CV and SMOTE | `results/tables/stratified_cv_model_results.csv` | `scripts/06_run_stratified_cross_validation.py` | curated QSAR features | Canonical |
@@ -74,6 +75,7 @@ The exact verified package set is recorded in `requirements-verified.txt`.
 
 - Treat `results/`, `figures/`, and `reports/` as generated evidence, not as independent claims.
 - Every manuscript metric should trace to one source artifact in this file.
+- The PyTorch neural-network baseline is optional and should not be reported as a canonical final model until it is run, verified, and integrated into the same reliability evaluation protocol.
 - The descriptor-graph prototype should be labeled exploratory because the primary QSAR dataset does not contain molecular graphs, SMILES, or BigSMILES.
 - The BigSMILES/Tg benchmark supports polymer representation discussion, but it does not provide biodegradation labels and should not be presented as validating biodegradation prediction.
 - Before submission, verify dataset licenses and citations for every dataset used or redistributed.

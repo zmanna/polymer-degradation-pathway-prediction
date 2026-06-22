@@ -11,6 +11,7 @@ This document explains what lives where and which files are source code, generat
 - `pyproject.toml`: package metadata and runtime dependencies.
 - `requirements.txt`: duplicate runtime dependency list for simple installs.
 - `requirements-verified.txt`: exact tested package set for publication-oriented regeneration.
+- `requirements-pytorch.txt`: optional PyTorch dependency set for the framework-based neural baseline.
 - `activate-project.sh`: local activation helper for `.venv`, `PYTHONPATH`, and Kaggle config.
 - `CITATION.cff`: citation metadata for the repository.
 - `LICENSE`: repository license.
@@ -29,6 +30,7 @@ Reusable source package for the scientific workflow.
 - `feature_selection.py`: Random Forest importance, permutation importance, mutual information, and reduced feature-set evaluation.
 - `uncertainty.py`: calibration, Brier/log-loss metrics, expected calibration error, uncertainty, and selective prediction.
 - `reliability_scoreboard.py`: final reliability-centered candidate ranking and model-selection figures.
+- `deep_learning.py`: optional PyTorch dense neural-network baseline for tabular QSAR descriptors.
 - `__init__.py`: package marker.
 - `README.md`: package-level navigation notes.
 
@@ -48,6 +50,7 @@ Executable workflow scripts. These are the main entry points for reproducing pro
 - `08_run_feature_importance_selection.py`: ranks features and evaluates reduced sets.
 - `09_run_uncertainty_reliability_analysis.py`: generates calibration, uncertainty, selective prediction, and cross-environment reliability artifacts.
 - `10_run_model_reliability_scoreboard.py`: generates final model-selection scoreboard, report, and figures.
+- `11_run_pytorch_neural_network_baseline.py`: optional PyTorch dense neural-network baseline; not part of `generate_all_results.py`.
 - `generate_all_results.py`: orchestrates scripts `01` through `10`.
 - `smoke_test_pipeline.py`: quick Random Forest pipeline sanity check.
 - `template_run_tabular_regression_baselines.py`: reusable template for numeric QSAR/QSPR regression datasets.
@@ -214,6 +217,7 @@ Developer and architecture documentation.
 - `docs/uml/workflow_sequence.mmd`: workflow sequence.
 - `docs/publication_artifact_provenance.md`: maps manuscript figures/tables to scripts and source outputs.
 - `docs/publication_run_2026-05-28.md`: records the stabilized publication-run command, environment, and observed output changes.
+- `docs/pytorch_extension_run_2026-06-22.md`: records the first optional PyTorch neural-network extension run.
 - README files: navigation.
 
 Classification: documentation.

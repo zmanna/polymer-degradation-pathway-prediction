@@ -24,6 +24,7 @@ from biodegradation_ml_framework.feature_engineering import build_tier2_proxy_fe
 from biodegradation_ml_framework.feature_selection import compute_feature_rankings, evaluate_feature_sets
 from biodegradation_ml_framework.uncertainty import run_uncertainty
 from biodegradation_ml_framework.reliability_scoreboard import build_model_reliability_scoreboard
+from biodegradation_ml_framework.deep_learning import is_torch_available, run_qsar_pytorch_fnn_classifier
 
 
 class QSARDataTests(unittest.TestCase):
@@ -87,6 +88,15 @@ class QSARDataTests(unittest.TestCase):
         self.assertEqual(set(result.metrics), {"accuracy", "precision", "recall", "f1_score", "roc_auc"})
         self.assertEqual(len(result.confusion_matrix), 2)
         self.assertEqual(len(result.confusion_matrix[0]), 2)
+
+    @unittest.skipUnless(is_torch_available(), "PyTorch optional dependency is not installed")
+    def test_qsar_pytorch_fnn_classifier(self) -> None:
+        result = run_qsar_pytorch_fnn_classifier(random_state=42, max_epochs=5, patience=2)
+        self.assertEqual(result.model_name, "pytorch_feedforward_neural_network")
+        self.assertIn("accuracy", result.metrics)
+        self.assertIn("roc_auc", result.metrics)
+        self.assertEqual(len(result.confusion_matrix), 2)
+        self.assertEqual(len(result.test_probabilities), len(result.test_labels))
 
     def test_descriptor_graph_prototype(self) -> None:
         result = run_descriptor_graph_prototype(random_state=42)
